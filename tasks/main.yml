@@ -1,0 +1,23 @@
+---
+- name: Downloading nginx.org GPG key
+  get_url:
+    url: "{{ nginx_org_repo_gpg_key_url }}"
+    dest: "{{ nginx_org_repo_gpg_key_path }}"
+    checksum: "{{ nginx_org_repo_gpg_key_checksum }}"
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Adding nginx.org GPG key to the RPM database
+  rpm_key:
+    key: "{{ nginx_org_repo_gpg_key_path }}"
+    state: present
+
+- name: Generating nginx.org repository config
+  yum_repository:
+    name: nginx
+    description: nginx repo
+    baseurl: "{{ nginx_org_repo_url }}"
+    gpgcheck: yes
+    enabled: "{{ nginx_org_repo_enabled | ternary(1, 0) }}"
+    gpgkey: "file://{{ nginx_org_repo_gpg_key_path }}"

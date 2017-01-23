@@ -1,0 +1,18 @@
+galaxy_info:
+  author: Eugene Zamriy
+  description: nginx.org repository for EL and derivatives
+  company: CloudLinux
+  license: MIT
+  min_ansible_version: 2.1
+  platforms:
+    - name: EL
+      versions:
+        - 5
+        - 6
+        - 7
+  galaxy_tags:
+    - nginx
+    - packaging
+    - repository
+    - repo
+dependencies: []

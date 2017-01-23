@@ -1,0 +1,5 @@
+---
+nginx_org_repo_url: "http://nginx.org/packages/{{ nginx_org_repo_mainline | ternary('mainline/', '') }}{{ (ansible_distribution == 'Red Hat Enterprise Linux') | ternary('rhel', 'centos') }}/$releasever/$basearch/"
+nginx_org_repo_gpg_key_path: /etc/pki/rpm-gpg/RPM-GPG-KEY-nginx
+nginx_org_repo_gpg_key_url: 'http://nginx.org/keys/nginx_signing.key'
+nginx_org_repo_gpg_key_checksum: 'sha1:8d700041140301d7829755455775a08cc2206d89'
